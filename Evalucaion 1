@@ -1,0 +1,117 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package herreria;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author dci
+ */
+public class Herreria {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner intro = new Scanner(System.in);
+        int producto;
+        int clientes;
+        int monto = 0;
+        int salida;
+        int compra;
+        int nombre = 0;
+        int venta = 0;
+        int martillo = 0, martilloCom = 0;
+        int sierra = 0, sierraCom = 0;
+        int tijera = 0, tijeraCom = 0;
+        int atornillador = 0, atornilladorCom = 0;
+        int clavo = 0, clavoCom = 0;
+        int tornillo = 0, tornilloCom = 0;
+        int yunque = 0, yunqueCom = 0;
+        System.out.println("****BIENVENIDO**** \n ");
+        System.out.println("Ingrese numero de clientes que desean comprar.");
+        clientes = intro.nextInt();
+        for (int i = 0; i < clientes; i++) {
+        System.out.println("**PRODUCTOS** \n Código: Producto: \n 210  -  Martillo "
+                    + "\n 211  -  Sierra \n 212  -  Tijeras \n 213  -  Atornillador \n 214  -  Clavos"
+                    + "\n 215  -  Tornillos \n 216  -  Yunque \n");
+        do{
+            System.out.println("Ingrese el código del producto a comprar el cliente");
+            producto = intro.nextInt();
+            switch(producto){
+                case 210:
+                    System.out.println("Martillo $2.990");
+                    martilloCom += 2990;
+                    martillo += 1;
+                    venta += 1;
+                    monto += 2990;
+                    break;
+                case 211:
+                    System.out.println("Sierra $3.490");
+                    sierraCom += 3490;
+                    sierra += 1;
+                    venta += 1;
+                    monto += 3490;
+                    break;
+                case 212:
+                    System.out.println("Tijera $1.990");
+                    tijeraCom += 1990;
+                    tijera += 1;
+                    venta += 1;
+                    monto += 1990;
+                    break;
+                case 213:
+                    System.out.println("Atornillador $3.390");
+                    atornilladorCom += 3390;
+                    atornillador += 1;
+                    venta += 1;
+                    monto += 3390;
+                    break;
+                case 214: 
+                    System.out.println("Clavos $490");
+                    clavoCom += 490;
+                    clavo += 1;
+                    venta += 1;
+                    monto += 490;
+                    break;
+                case 215:
+                    System.out.println("Tornillos $990");
+                    tornilloCom += 990;
+                    tornillo += 1;
+                    venta += 1;
+                    monto += 990;
+                    break;
+                case 216:
+                    System.out.println("Yunque $4.090");
+                    yunqueCom += 4090;
+                    yunque += 1;
+                    venta += 1;
+                    monto += 4090;
+                    break;
+                default:
+                    System.out.println("El código ingresado no es valido.");
+                    break;
+            }
+        System.out.println("Si desea otra compra ingrese el número *1* si no desea nada más ingrese el numero *2*.");
+        salida = intro.nextInt();
+        }while(salida==1);
+        System.out.println("\nEl total de la venta es: $"+monto);
+        System.out.println("Ventas totales del dia: "+venta+"\n");
+        System.out.println("Detalle por productos vendidos: \n\nCódigo: Nombre:      Ventas: Ingresos:\n");
+        System.out.println("210     Martillos      "+martillo+"     "+martilloCom);
+        System.out.println("211     Sierras        "+sierra+"     "+sierraCom);
+        System.out.println("212     Tijeras        "+tijera+"     "+tijeraCom);
+        System.out.println("213     Atornilladores "+atornillador+"     "+atornilladorCom);
+        System.out.println("214     Clavos         "+clavo+"     "+clavoCom);
+        System.out.println("215     Tornillos      "+tornillo+"     "+tornilloCom);
+        System.out.println("216     Yunques        "+yunque+"     "+yunqueCom);
+        System.out.println("\n *GRACIAS POR SU COMPRA*");
+        }
+    }
+    
+}
