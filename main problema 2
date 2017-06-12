@@ -1,0 +1,25 @@
+
+package problema2;
+
+import java.util.Scanner;
+
+public class Problema2 {
+    
+    public static void main(String[] args) {
+        Scanner intro = new Scanner(System.in);
+        
+        int horasTrabajo;
+        int ventas;
+        
+        System.out.println("Ingrese horas trabajadas en la semana");
+        horasTrabajo = intro.nextInt();
+        System.out.println("Ingrese ventas totales en la semana");
+        ventas = intro.nextInt();
+        
+        Sueldo call = new Sueldo(horasTrabajo, ventas);
+        
+        System.out.println("Sueldo semanal: "+call.Sueldo());
+        System.out.println("Sueldo mensual: "+(call.Sueldo()*4));
+    }
+    
+}
