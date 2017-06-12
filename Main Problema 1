@@ -1,0 +1,25 @@
+package problema1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author dci
+ */
+public class Problema1 {
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner intro = new Scanner(System.in);
+        int num;
+        
+        do{
+        System.out.println("Ingresa un número");
+        num = intro.nextInt();
+        }while(num<1 || num>10);
+        
+        Contador call = new Contador(num);
+        
+        call.cont(num);
+    }
+    
+}
