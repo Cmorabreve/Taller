@@ -1,0 +1,55 @@
+
+package problema2;
+
+public class Sueldo {
+    private int horasTrabajo;
+    private int ventas;
+
+    public Sueldo(int horasTrabajo, int ventas) {
+        this.horasTrabajo = horasTrabajo;
+        this.ventas = ventas;
+    }
+
+    public int getHorasTrabajo() {
+        return horasTrabajo;
+    }
+
+    public void setHoras(int horasTrabajo) {
+        this.horasTrabajo = horasTrabajo;
+    }
+
+    public int getVentas() {
+        return ventas;
+    }
+
+    public void setVentas(int ventas) {
+        this.ventas = ventas;
+    }
+    
+    public double Sueldo(){
+        double horaExtra = 0;
+        double horasExtraTotal = 0;
+                
+        if(horasTrabajo>=41){
+            horaExtra = (horasTrabajo - 40) * 3000;
+            horasExtraTotal = horaExtra + 80000;
+        }
+        
+        if(horasTrabajo<=40){
+            horasExtraTotal = horasTrabajo*2000;
+        }
+    
+        double sueldo = 0;
+        if(ventas>300000 && ventas<499999){
+            sueldo = (ventas * 0.05) + horasExtraTotal;
+        }
+        
+        if(ventas>500000){
+            sueldo = (ventas * 0.1) + horasExtraTotal;
+        }
+        if(ventas<=300000){
+            sueldo = (double) horasExtraTotal;
+        }
+        return sueldo;
+    }
+}
