@@ -1,0 +1,36 @@
+
+package problema3;
+
+import java.util.Scanner;
+
+public class Problema3 {
+
+    public static void main(String[] args) {
+        Scanner intro = new Scanner(System.in);
+        int km;
+        boolean idaVuelta = true;
+        int viaje;
+        int niño;
+        int adulto;
+        int abuelo;
+        
+        System.out.println("Ingrese cuantos kilometros hay hasta el lugar que desea ir");
+        km = intro.nextInt();
+        
+        System.out.println("¿Su viaje es ida y vuelta? Si=1 No=2");
+        viaje = intro.nextInt();
+        
+        if(viaje==2){
+            idaVuelta = false;
+        }
+        if(idaVuelta=true){
+            System.out.println("Ingrese cuantos niños van en su viaje");
+            niño = intro.nextInt();
+            System.out.println("Ingrese cuantos adultos van en su viaje");
+            adulto = intro.nextInt();
+            System.out.println("Ingrese cuantos adultos mayores van en su viaje");
+            abuelo = intro.nextInt();
+        }
+    }
+    
+}
