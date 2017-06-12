@@ -1,0 +1,27 @@
+package problema1;
+
+/**
+ *
+ * @author dci
+ */
+public class Contador {
+    private int num;
+
+    public Contador(int num) {
+        this.num = num;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+    
+    public void cont(int num){
+        for (int i = 0; i < num; i++) {
+            System.out.println(i+1);
+        }
+    }
+}
