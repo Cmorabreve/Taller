@@ -1,0 +1,54 @@
+
+package problema3;
+
+public class Vuelo {
+    private int Km;
+    private int niño;
+    private int adulto;
+    private int abuelo;
+
+    public Vuelo(int Km, int niño, int adulto, int abuelo) {
+        this.Km = Km;
+        this.niño = niño;
+        this.adulto = adulto;
+        this.abuelo = abuelo;
+    }
+
+    public int getKm() {
+        return Km;
+    }
+
+    public void setKm(int Km) {
+        this.Km = Km;
+    }
+
+    public int getNiño() {
+        return niño;
+    }
+
+    public void setNiño(int niño) {
+        this.niño = niño;
+    }
+
+    public int getAdulto() {
+        return adulto;
+    }
+
+    public void setAdulto(int adulto) {
+        this.adulto = adulto;
+    }
+
+    public int getAbuelo() {
+        return abuelo;
+    }
+
+    public void setAbuelo(int abuelo) {
+        this.abuelo = abuelo;
+    }
+    
+    public void Precio(){
+        int precio = 0;
+        
+        
+    }
+}
