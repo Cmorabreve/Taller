@@ -1,0 +1,265 @@
+package evaluacion3;
+
+/**
+ *
+ * @author Cristian
+ */
+public class Evaluacion3 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Informacion info = new Informacion();
+        info.main();
+    }
+}
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+package evaluacion3;
+
+/**
+ *
+ * @author Cristian
+ */
+public class Clientes extends Informacion{
+    String codigo, edad, telefono, vendedor, montoComprado;
+
+    public Clientes(String codigo, String edad, String telefono, String vendedor, String montoComprado) {
+        this.codigo = codigo;
+        this.edad = edad;
+        this.telefono = telefono;
+        this.vendedor = vendedor;
+        this.montoComprado = montoComprado;
+    }
+    
+    public void desplegar(){
+        System.out.println("Codigo: "+codigo);
+        System.out.println("Edad: "+edad);
+        System.out.println("Telefono: "+telefono);
+        System.out.println("Vendedor que lo atiende: "+vendedor);
+        System.out.println("Monto comprado: "+montoComprado);
+    }
+
+}
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+package evaluacion3;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Cristian
+ */
+public class Informacion {
+    public void main(){
+        Scanner intro = new Scanner(System.in);
+        Scanner teclado = new Scanner(System.in);
+        Archivo personas = new Archivo();
+        ArchivoModificado cliente = new ArchivoModificado();
+        
+        int opcion = 0;
+        while(opcion!=5){
+            System.out.println("Menu");
+            System.out.println("1.- Agregar informacion");
+            System.out.println("2.- Mostrar lista ordenados por codigo");
+            System.out.println("3.- Agregar informacion adicional");
+            System.out.println("4.- Mostrar informacion adicional");
+            System.out.println("5.- Salir");
+            try {
+                opcion = teclado.nextInt();
+            } catch (Exception e) {
+                System.out.println("Opción no valida");
+            }
+            switch(opcion){
+                case 1:
+                    System.out.println("Escribe el codigo: ");
+                    String codigo = intro.nextLine();                    
+                    System.out.println("Escribe el nombre: ");
+                    String nombre = intro.nextLine();
+                    System.out.println("Escribe la ciudad: ");
+                    String ciudad = intro.nextLine();
+                    System.out.println("Escribe si es vendedor o cliente:  ");
+                    String oficio = intro.nextLine();
+                    Personas persona = new Personas(codigo,nombre,ciudad,oficio);
+                    personas.escribirPersonas(persona);
+                    break;
+                case 2:
+                    personas.Imprimir();
+                    break;
+                case 3:
+                    System.out.println("Escribe el codigo: ");
+                    codigo = intro.nextLine();
+                    System.out.println("Escribe la edad: ");
+                    String edad = intro.nextLine();                    
+                    System.out.println("Escribe el telefono: ");
+                    String telefono = intro.nextLine();
+                    System.out.println("Escribe el vendedor que lo atiende: ");
+                    String vendedor = intro.nextLine();
+                    System.out.println("Escribe el monto comprado:  ");
+                    String montoComprado = intro.nextLine();
+                    Clientes clientes = new Clientes(codigo,edad,telefono,vendedor,montoComprado);
+                    cliente.rescribirPersonas(clientes);
+                    break;
+                case 4:
+                    cliente.reImprimir();
+                    break;
+                case 5:
+                    break;
+                default:
+                    System.out.println("Opción no valida");
+                    break;
+            }
+        }
+    
+    }
+    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    package evaluacion3;
+
+/**
+ *
+ * @author Cristian
+ */
+public class Personas {
+    String codigo, nombre, ciudad, oficio;
+
+    public Personas(String codigo, String nombre, String ciudad, String oficio) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.ciudad = ciudad;
+        this.oficio = oficio;
+    }
+    
+    public void desplegarPersonas(){
+        System.out.println("Codigo: "+codigo);
+        System.out.println("Nombre: "+nombre);
+        System.out.println("Ciudad: "+ciudad);
+        System.out.println("Vendedor/Cliente: "+oficio);
+    }
+    
+}
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+package evaluacion3;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+/**
+ *
+ * @author Cristian
+ */
+public class Archivo {
+    public void escribirPersonas(Personas nueva){
+    try {
+        File f = new File("persona.txt");
+        FileWriter fw;
+        BufferedWriter bw;
+        if(f.exists()){
+            fw = new FileWriter(f,true);
+            bw = new BufferedWriter(fw);
+            bw.newLine();
+            bw.write(nueva.codigo+"%"+nueva.nombre+"%"+nueva.ciudad+"%"+nueva.oficio);
+        }else{
+            fw = new FileWriter(f);
+            bw = new BufferedWriter(fw);
+            bw.write(nueva.codigo+"%"+nueva.nombre+"%"+nueva.ciudad+"%"+nueva.oficio);
+        }
+        bw.close();
+        fw.close();
+        
+        
+        } catch (IOException e){
+            System.out.println(e);
+        }
+    }
+    
+    public void Imprimir(){
+        try{
+            File f = new File("persona.txt");
+            if(f.exists()){
+                FileReader fr = new FileReader(f);
+                BufferedReader br = new BufferedReader(fr);
+                String linea;
+                while((linea = br.readLine())!=null){
+                    String [] persona = linea.split("%");
+                    Personas p = new Personas(persona[0],persona[1],persona[2],persona[3]);
+                    p.desplegarPersonas();
+                    System.out.println("***********************************");
+                    
+                }
+        }else{
+                System.out.println("Cliente no existente");
+            }
+            
+        } catch (IOException e){
+            System.out.println("Error");
+        }
+    }
+    
+}
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+package evaluacion3;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+/**
+ *
+ * @author Cristian
+ */
+public class ArchivoModificado{
+    public void rescribirPersonas(Clientes nueva){
+    try {
+        
+        File f = new File("fullpersona.txt");
+        FileWriter fw;
+        BufferedWriter bw;
+        if(f.exists()){
+            fw = new FileWriter(f,true);
+            bw = new BufferedWriter(fw);
+            bw.newLine();
+            bw.write(nueva.codigo+"&"+nueva.edad+"%"+nueva.telefono+"%"+nueva.vendedor+"%"+nueva.montoComprado);
+        }else{
+            fw = new FileWriter(f);
+            bw = new BufferedWriter(fw);
+            bw.write(nueva.codigo+"&"+nueva.edad+"%"+nueva.telefono+"%"+nueva.vendedor+"%"+nueva.montoComprado);
+        }
+        bw.close();
+        fw.close();
+        
+        
+        } catch (IOException e){
+            System.out.println(e);
+        }
+    }
+    
+    public void reImprimir(){
+        try{
+            File f = new File("fullpersona.txt");
+            if(f.exists()){
+                FileReader fr = new FileReader(f);
+                BufferedReader br = new BufferedReader(fr);
+                String linea;
+                while((linea = br.readLine())!=null){
+                    String [] cliente = linea.split("%");
+                    Clientes c = new Clientes(cliente[0],cliente[1],cliente[2],cliente[3],cliente[4]);
+                    c.desplegar();
+                    System.out.println("***********************************");
+                    
+                }
+        }else{
+                System.out.println("Cliente no existente");
+            }
+            
+        } catch (IOException e){
+            System.out.println("Error");
+        }
+    }
+    
+}
